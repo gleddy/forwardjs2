@@ -10,16 +10,26 @@ const books = [
 
 const BookList = ({ books }) => {
   return (
-    React.createElement(
-      "ul",
-      { className: "book-list" },
-      books.map(book => {
-        return React.createElement(
-          "li",
-          { key: book.id, className: "one-book" },
-          book.title);
-      })
-    )
+    // React.createElement(
+    //   "ul",
+    //   { className: "book-list" },
+    //   books.map(({ id, title, price }) => {
+    //     return React.createElement(
+    //       "li",
+    //       { key: id, className: "one-book" },
+    //       `${title}, ${price}`
+    //       );
+    //   })
+    // )
+    <ul className="book-list">
+      {books.map(({ id, title, price }) => {
+        return (
+          <li key={id} className="one-book">
+            {title}, {price}
+          </li>
+        );
+      })}
+    </ul>
   );
 };
 
