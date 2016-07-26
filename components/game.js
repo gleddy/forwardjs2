@@ -38,12 +38,15 @@ class Game extends React.Component {
   render() {
     let grid = [], row;
 
+    const isRecallPhase = this.state.gameState === "recall";
     for(let r = 0; r < this.props.rows; r++) {
       row = [];
       for(let c = 0; c < this.props.cols; c++) {
         const cellId = `r${r}-c${c}`;
+
         row.push(<Cell key={cellId}
           r={r} c={c}
+          isRecallPhase={isRecallPhase}
           selectCell={this.selectCell}
           gameState={this.state.gameState}
           selected={this.state.selected}
@@ -59,10 +62,14 @@ class Game extends React.Component {
     return (
       <div>
         {grid}
-        <button>Play Again</button>
+        <div>
+          {this.props.messages[this.state.gameState]}
+        </div>
+        <button onClick={this.props.resetGame}>Play Again</button>
        </div>
     );
   }
+
 }
 
 export default Game;

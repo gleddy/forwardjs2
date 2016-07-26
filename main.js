@@ -16,9 +16,18 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Game key={this.state.gameId} rows={5} cols={5} />
+        <Game key={this.state.gameId} rows={5} cols={5}
+              messages={this.props.messages}
+              resetGame={this.resetGame} />
        </div>
     );
+  }
+
+  static defaultProps = {
+    messages: {
+      challenge: "Remember now..",
+      recall: "Recall now, por favor"
+    }
   }
 }
 

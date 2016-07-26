@@ -21,11 +21,14 @@ class Cell extends React.Component {
     }).length === 1;
   }
 
+  canBeClicked() {
+    return this.props.isRecallPhase || this.isSelected();
+  }
+
   guess = () => {
-    if (this.isSelected()) {
-      return;
+    if (this.canBeClicked()) {
+      this.props.selectCell(this.props.r, this.props.c);
     }
-    this.props.selectCell(this.props.r, this.props.c)
   };
 
   cellClassName() {
