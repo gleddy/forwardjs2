@@ -11,4 +11,12 @@ const BookList = ({ books }) => {
   );
 };
 
+BookList.propTypes = {
+  books: React.PropTypes.arrayOf(React.PropTypes.object)
+}
+
+BookList.defaultProps = {
+  books: []
+}
+
 export default BookList;
