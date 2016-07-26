@@ -8,26 +8,19 @@ const books = [
   { id: 101, title: 'Book 66', price: 1900 }
 ];
 
+const Book = ({ title, price }) => {
+  return (
+    <li className="one-book">
+      {title}, {price}
+    </li>
+  );
+}
+
 const BookList = ({ books }) => {
   return (
-    // React.createElement(
-    //   "ul",
-    //   { className: "book-list" },
-    //   books.map(({ id, title, price }) => {
-    //     return React.createElement(
-    //       "li",
-    //       { key: id, className: "one-book" },
-    //       `${title}, ${price}`
-    //       );
-    //   })
-    // )
     <ul className="book-list">
-      {books.map(({ id, title, price }) => {
-        return (
-          <li key={id} className="one-book">
-            {title}, {price}
-          </li>
-        );
+      {books.map(book => {
+        return <Book key={book.id} {...book} />
       })}
     </ul>
   );
