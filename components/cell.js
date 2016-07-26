@@ -22,19 +22,36 @@ class Cell extends React.Component {
   }
 
   guess = () => {
+    if (this.isSelected()) {
+      return;
+    }
     this.props.selectCell(this.props.r, this.props.c)
-    const isCorrectGuess = this.isTarget();
   };
 
   cellClassName() {
-    return `cell ${this.isTarget() ? 'target' : ''}`;
+    let className = "cell";
+    const isTarget = this.isTarget(),
+          isSelected = this.isSelected();
+
+    if (isTarget) {
+      if (this.props.gameState === 'challenge') {
+        className += " target";
+      }
+      if (isSelected) {
+        className += " guess-true";
+      }
+    } else {
+      if (isSelected) {
+        className += " guess-false";
+      }
+    }
+    return className;
   }
 
   render() {
     return (
-      <div className={this.cellClassName()}>
+      <div className={this.cellClassName()}
            onClick={this.guess}>
-           {this.isSelected() ? '1': '0'}
       </div>
     );
   }
