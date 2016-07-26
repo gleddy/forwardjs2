@@ -8,8 +8,7 @@ const books = [
   { id: 101, title: 'Book 66', price: 1900 }
 ];
 
-
-const BookList = () => {
+const BookList = ({ books }) => {
   return (
     React.createElement(
       "ul",
@@ -25,7 +24,7 @@ const BookList = () => {
 };
 
 ReactDOM.render(
-  React.createElement(BookList)
+  React.createElement(BookList, { books })
   ,
   document.getElementById("react")
 );
