@@ -8,26 +8,10 @@ const books = [
   { id: 101, title: 'Book 66', price: 1900 }
 ];
 
-const Book = ({ title, price }) => {
-  return (
-    <li className="one-book">
-      {title}, {price}
-    </li>
-  );
-}
-
-const BookList = ({ books }) => {
-  return (
-    <ul className="book-list">
-      {books.map(book => {
-        return <Book key={book.id} {...book} />
-      })}
-    </ul>
-  );
-};
+import BookList from "./components/book-list";
 
 ReactDOM.render(
-  React.createElement(BookList, { books })
+  <BookList books={books} />
   ,
   document.getElementById("react")
 );
